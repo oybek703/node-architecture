@@ -4,6 +4,7 @@
 import {getArgs} from './helpers/args.js'
 import {printError, printHelp, printSuccess} from './services/log.service.js'
 import {saveKeyValue} from './services/saveKeyValue.service.js'
+import {getWeather} from './services/api.service.js'
 
 async function saveToken(token) {
   try {
@@ -25,6 +26,7 @@ async function initCLI() {
   if (args.t) {
     await saveToken(args.t)
   }
+  await getWeather('tashkent')
 }
 
 (async () => {
