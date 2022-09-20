@@ -1,22 +1,24 @@
 import {getKeyValue} from './saveKeyValue.service.js'
-import {get} from 'https'
+import {printError} from './log.service.js'
+import axios from 'axios'
 
 export async function getWeather(city) {
   const token = await getKeyValue('token')
   if (!token) throw new Error('API key is not set! Set it via -t [API_KEY] command.')
-  const url = new URL('https://api.openweathermap.org/data/2.5/weather')
-  url.searchParams.append('q', city)
-  url.searchParams.append('appid', token)
-  url.searchParams.append('lang', 'en')
-  url.searchParams.append('units', 'metric')
-
-  get(url, response => {
-    let res = ''
-    response.on('data', chunk => {
-      res += chunk
+  try {
+    const {data} = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
+      params: {
+        q: city,
+        appid: token,
+        lang: 'en',
+        units: 'metric'
+      }
     })
-    response.on('end', function() {
-      console.log(res)
-    })
-  })
+    return data
+  } catch (e) {
+    const {response = {}} = e
+    const {data = {}} = response
+    const {message = 'CLI error!'} = data
+    printError(message)
+  }
 }

@@ -26,7 +26,7 @@ async function initCLI() {
   if (args.t) {
     await saveToken(args.t)
   }
-  await getWeather('tashkent')
+  console.log(await getWeather('tashkent'))
 }
 
 (async () => {
