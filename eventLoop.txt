@@ -1,0 +1,18 @@
+ - инициалиация
+
+## Фазы
+- таймеры
+// microTaskQueue, nextTick
+- pending callbacks
+// microTaskQueue, nextTick
+- idle, prepare
+// microTaskQueue, nextTick
+- poll
+// microTaskQueue, nextTick
+- check
+// microTaskQueue, nextTick
+- close callback
+
+- проверка на окончание
+
+
