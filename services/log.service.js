@@ -21,3 +21,15 @@ export function printHelp() {
       )
   )
 }
+
+export function printWeather(data) {
+  console.log(
+      dedent(
+          `${chalk.bgGrey.white(' SUCCESS ')} Weather in ${data.name}
+                 Temperature: ${data.main.temp} (feels like ${data.main.feels_like})
+                 Humidity: ${data.main.humidity}%
+                 Wind speed: ${data.wind.speed} m/s
+                `
+      )
+  )
+}

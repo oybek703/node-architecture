@@ -1,6 +1,6 @@
 {
-  "name": "weather-cli",
-  "version": "1.0.0",
+  "name": "yo-weather-cli",
+  "version": "1.0.1",
   "description": "Weather CLI",
   "main": "weather.js",
   "bin": {
